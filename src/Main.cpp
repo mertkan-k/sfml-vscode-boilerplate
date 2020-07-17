@@ -1,11 +1,12 @@
 #include "Platform/Platform.hpp"
+#include "include/game.hpp"
 
 int main()
 {
 	util::Platform platform;
 
 #if defined(_DEBUG)
-	std::cout << "Hello World!" << std::endl;
+	std::cout << "Hello Debug!" << std::endl;
 #endif
 
 	sf::RenderWindow window;
@@ -15,25 +16,19 @@ int main()
 	window.create(sf::VideoMode(200.0f * screenScalingFactor, 200.0f * screenScalingFactor), "SFML works!");
 	platform.setIcon(window.getSystemHandle());
 
-	sf::CircleShape shape(window.getSize().x / 2);
-	shape.setFillColor(sf::Color::White);
-
-	sf::Texture shapeTexture;
-	shapeTexture.loadFromFile("content/sfml.png");
-	shape.setTexture(&shapeTexture);
-
 	sf::Event event;
+
+	Game::game game(&window);
 
 	while (window.isOpen())
 	{
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
+			game.HandlePollEvent(&event);
 		}
 
 		window.clear();
-		window.draw(shape);
+		game.RefreshDisplay();
 		window.display();
 	}
 
