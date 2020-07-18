@@ -18,19 +18,27 @@ public:										/* functions from window management */
 	void HandlePollEvent(sf::Event* event); /* Calling from main.window.pollEvent */
 
 	/* General gui events */
-	void CloseEvent();
-	void ResizeEvent(sf::Event::SizeEvent& size);
+	void OnClose();
+	void OnResize(sf::Event::SizeEvent& size);
 
 	/* Focus events */
-	void LostFocusEvent();
-	void GainedFocusEvent();
+	void OnLostFocus();
+	void OnGainedFocus();
 
 	/* Text events */
 	void TextEnteredEvent(sf::Event::TextEvent& text);
 
 	/* Key events */
-	void KeyPressedEvent(sf::Event::KeyEvent& key);
-	void KeyReleasedEvent(sf::Event::KeyEvent& key);
+	void OnKeyPressed(sf::Event::KeyEvent& key);
+	void OnKeyReleased(sf::Event::KeyEvent& key);
+
+	/* Mouse events */
+	void OnMouseWhell(sf::Event::MouseWheelScrollEvent& event);
+	void OnMouseButtonPressed(sf::Event::MouseButtonEvent& event);
+	void OnMouseButtonReleased(sf::Event::MouseButtonEvent& event);
+	void OnMouseMoved(sf::Event::MouseMoveEvent& event);
+	void OnMouseEntered();
+	void OnMouseLeft();
 
 public:					   /* functions from display */
 	void RefreshDisplay(); /* Calling from main.window.isOpen() */
