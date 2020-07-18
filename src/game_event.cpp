@@ -2,9 +2,9 @@
 
 using namespace Game;
 
-void game::HandlePollEvent(sf::Event* event)
+void game::HandlePollEvent(sf::Event& event)
 {
-	switch (event->type)
+	switch (event.type)
 	{
 		using namespace sf;
 
@@ -13,7 +13,7 @@ void game::HandlePollEvent(sf::Event* event)
 			break;
 
 		case (Event::Resized):
-			OnResize(event->size);
+			OnResize(event.size);
 			break;
 
 		case (Event::LostFocus):
@@ -29,27 +29,27 @@ void game::HandlePollEvent(sf::Event* event)
 			break;
 
 		case (Event::KeyPressed):
-			OnKeyPressed(event->key);
+			OnKeyPressed(event.key);
 			break;
 
 		case (Event::KeyReleased):
-			OnKeyReleased(event->key);
+			OnKeyReleased(event.key);
 			break;
 
 		case (Event::MouseWheelScrolled):
-			OnMouseWhell(event->mouseWheelScroll);
+			OnMouseWhell(event.mouseWheelScroll);
 			break;
 
 		case (Event::MouseButtonPressed):
-			OnMouseButtonPressed(event->mouseButton);
+			OnMouseButtonPressed(event.mouseButton);
 			break;
 
 		case (Event::MouseButtonReleased):
-			OnMouseButtonReleased(event->mouseButton);
+			OnMouseButtonReleased(event.mouseButton);
 			break;
 
 		case (Event::MouseMoved):
-			OnMouseMoved(event->mouseMove);
+			OnMouseMoved(event.mouseMove);
 			break;
 
 		case (Event::MouseEntered):
@@ -116,8 +116,8 @@ void game::OnMouseWhell(sf::Event::MouseWheelScrollEvent& event)
 	else
 		std::cout << "wheel type: unknown" << std::endl;
 	std::cout << "wheel movement: " << event.delta << std::endl;
-	std::cout << "mouse x: " << event.x << std::endl;
-	std::cout << "mouse y: " << event.y << std::endl;
+	// std::cout << "mouse x: " << event.x << std::endl;
+	// std::cout << "mouse y: " << event.y << std::endl;
 }
 
 void game::OnMouseButtonPressed(sf::Event::MouseButtonEvent& event)

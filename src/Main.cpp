@@ -24,7 +24,7 @@ int main()
 	{
 		while (window.pollEvent(event))
 		{
-			game.HandlePollEvent(&event);
+			game.HandlePollEvent(event);
 		}
 
 		window.clear();

@@ -14,8 +14,9 @@ public: /* constructor and destructor */
 	game(sf::RenderWindow* window);
 	~game();
 
-public:										/* functions from window management */
-	void HandlePollEvent(sf::Event* event); /* Calling from main.window.pollEvent */
+public: /* functions from window management */
+	/* Calling from main.window.pollEvent */
+	void HandlePollEvent(sf::Event& event);
 
 	/* General gui events */
 	void OnClose();
@@ -40,9 +41,10 @@ public:										/* functions from window management */
 	void OnMouseEntered();
 	void OnMouseLeft();
 
-public:					   /* functions from display */
-	void RefreshDisplay(); /* Calling from main.window.isOpen() */
-};						   // class game
+public: /* functions from display */
+	/* Calling from main.window.isOpen() */
+	void RefreshDisplay();
+}; // class game
 
 } // namespace Game
 
